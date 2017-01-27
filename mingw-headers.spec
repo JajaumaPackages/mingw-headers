@@ -15,14 +15,14 @@
 # a file conflict with the winpthreads headers
 # Winpthreads is available as of Fedora 20
 %if 0%{?fedora} >= 20 || 0%{?rhel} >= 7
-%global bundle_dummy_pthread_headers 1
+%global bundle_dummy_pthread_headers 0
 %else
 %global bundle_dummy_pthread_headers 1
 %endif
 
 Name:           mingw-headers
 Version:        5.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Win32/Win64 header files
 
 License:        Public Domain and LGPLv2+ and ZPLv2.1
@@ -128,6 +128,9 @@ rm -f $RPM_BUILD_ROOT%{mingw64_includedir}/pthread_unistd.h
 
 
 %changelog
+* Fri Jan 27 2017 Jajauma's Packages <jajauma@yandex.ru> - 5.0.0-3
+- De-bootstrap build
+
 * Fri Jan 27 2017 Jajauma's Packages <jajauma@yandex.ru> - 5.0.0-2
 - Set bundle_dummy_pthread_headers to 1 for bootstrap
 
